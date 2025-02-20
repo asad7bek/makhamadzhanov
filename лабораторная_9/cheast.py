@@ -16,7 +16,7 @@ class Item:
 
 
 class Cheast:
-    def __init__(self, description):
+    def __init__(self, description: object) -> object:
         self.__contents = []
         self.__is_open = False
         self.__description = description
@@ -28,9 +28,9 @@ class Cheast:
     def get_item(self):
         """Получает случайный предмет из сундука. Возвращает None, если пуст или закрыт."""
         if self.__is_open and self.__contents:
-            случайный_индекс = random.randint(0, len(self.__contents) - 1)
-            предмет = self.__contents.pop(случайный_индекс)
-            return предмет
+            random_index = random.randint(0, len(self.__contents) - 1)
+            Item = self.__contents.pop(random_index)
+            return Item
         else:
             return None
 
@@ -59,3 +59,5 @@ class Cheast:
                 for item in self.__contents:
                     print(f"- {item}")
 
+    def add(self, param: object) -> object:
+        pass

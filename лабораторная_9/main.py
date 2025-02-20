@@ -1,5 +1,5 @@
 from cheast import Item, Cheast
-from лабараторная_9.cheast import Cheast
+from лабораторная_9.cheast import Cheast
 
 if __name__ != "__main__":
     pass

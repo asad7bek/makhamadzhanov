@@ -1,1 +1,120 @@
+def main():
+    n = int(input("Введите количество элементов массива: "))  # Вводим размер массива
+    arr = []  # Создаём пустой список
 
+    # Заполняем массив числами
+    for i in range(n):
+        num = int(input(f"Введите элемент {i+1}: "))
+        arr.append(num)
+
+    # Считаем сумму элементов
+    summa = 0
+    for num in arr:
+        summa += num
+
+    # Выводим результат
+    print("Сумма элементов массива:", summa)
+
+
+# Проверяем, запущен ли этот файл напрямую
+if __name__ == "__main__":
+    main()
+
+
+def main():
+    n = int(input("Введите количество элементов массива: "))  # Сколько чисел в массиве
+    arr = []  # Создаём пустой список
+
+    # Вводим числа в массив
+    for i in range(n):
+        num = int(input(f"Введите элемент {i+1}: "))
+        arr.append(num)
+
+    # Берём первый элемент как минимум
+    min_value = arr[0]
+
+    # Проходим по массиву и ищем минимальный
+    for i in range(1, n):
+        if arr[i] < min_value:
+            min_value = arr[i]
+
+    # Выводим результат
+    print("Минимальный элемент массива:", min_value)
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+def swap_with_temp(a, b):
+    temp = a  # Временная переменная
+    a = b
+    b = temp
+    return a, b
+
+def swap_without_temp(a, b):
+    a = a + b
+    b = a - b
+    a = a - b
+    return a, b
+
+def main():
+    # Ввод двух чисел
+    a = int(input("Введите первое число: "))
+    b = int(input("Введите второе число: "))
+
+    # Обмен через временную переменную
+    new_a, new_b = swap_with_temp(a, b)
+    print("Обмен с временной переменной:", new_a, new_b)
+
+    # Обмен без временной переменной (арифметический способ)
+    new_a, new_b = swap_without_temp(a, b)
+    print("Обмен без временной переменной:", new_a, new_b)
+
+if __name__ == "__main__":
+    main()
+
+
+def factorial(n):
+    result = 1  # Начинаем с 1, так как факториал 0! = 1
+    for i in range(1, n + 1):  # Цикл от 1 до n включительно
+        result *= i  # Умножаем текущее значение на i
+    return result
+
+def main():
+    n = int(input("Введите число: "))  # Вводим число
+
+    if n < 0:
+        print("Факториал определён только для n ≥ 0")  # Проверка на отрицательное число
+    else:
+        print(f"Факториал числа {n} равен {factorial(n)}")  # Вызываем функцию
+
+if __name__ == "__main__":
+    main()
+
+def count_even_numbers(arr):
+    count = 0  # Счётчик чётных чисел
+    for num in arr:  # Проходим по массиву
+        if num % 2 == 0:  # Если число делится на 2 без остатка, оно чётное
+            count += 1
+    return count
+
+def main():
+    # Ввод количества элементов массива
+    n = int(input("Введите количество элементов массива: "))
+
+    # Заполняем массив
+    arr = []
+    for i in range(n):
+        num = int(input(f"Введите элемент {i+1}: "))
+        arr.append(num)
+
+    # Вычисляем количество чётных чисел
+    even_count = count_even_numbers(arr)
+
+    # Вывод результата
+    print("Количество чётных чисел в массиве:", even_count)
+
+if __name__ == "__main__":
+    main()

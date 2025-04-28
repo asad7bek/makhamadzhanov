@@ -1,0 +1,24 @@
+{
+    "response": {
+        "GeoObjectCollection": {
+            "featureMember": [
+                {
+                    "GeoObject": {
+                        "metaDataProperty": {
+                            "GeocoderMetaData": {
+                                "AddressDetails": {
+                                    "Country": {
+                                        "CountryName": "Россия"
+                                    }
+                                }
+                            }
+                        },
+                        "Point": {
+                            "pos": "55.9549 54.7388"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

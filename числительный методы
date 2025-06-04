@@ -1,0 +1,20 @@
+import math
+
+def calculate(n, flag):
+    if n == 2:
+        return 2 * math.sqrt(2)
+    else:
+        p_prev = calculate(n - 1, flag)
+        term = (p_prev / (2 ** (n - 1))) ** 2
+        if flag:
+            return 2 ** (n - 1) * (2 * term) / (1 + math.sqrt(1 - term))
+        else:
+            return 2 ** (n - 1) * math.sqrt(2 * (1 - math.sqrt(1 - term)))
+
+print("n\tУстойчивый p_n\t\tОтклонение\t\tНеустойчивый p_n\tОтклонение")
+for n in range(3, 40):
+    pn_stable = calculate(n, False)
+    pn_unstable = calculate(n, True)
+    delta_stable = pn_stable - math.pi
+    delta_unstable = pn_unstable - math.pi
+    print(f"{n}\t{pn_stable:.16f}\t{delta_stable:.16f}\t{pn_unstable:.16f}\t{delta_unstable:.16f}")

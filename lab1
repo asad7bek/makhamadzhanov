@@ -1,0 +1,58 @@
+import math
+
+
+def taylor_exp_naive(x):
+    result = 1.0
+    term = x
+    counter = 1
+    while result + term != result:
+        result += term
+        counter += 1
+        term *= x / counter
+    return result
+
+
+def taylor_exp_stable(x):
+    if x < 0:
+        return 1.0 / taylor_exp_stable(-x)
+    elif x > 709:
+        return float('inf')  # Ограничение на переполнение exp
+    else:
+        total = 1.0
+        current = x
+        i = 1
+        while total + current != total:
+            total += current
+            i += 1
+            current *= x / i
+        return total
+
+
+# Набор значений x для анализа
+x_list = [-250, -200, -150, -100, -50, -10, 0, 10, 50, 100, 150, 200, 250]
+
+print("НАИВНЫЙ ПОДХОД")
+print(f"{'x':<8} | {'Вычислено':<30} | {'math.exp':<30} | {'Относит. погрешность':<30}")
+print("-" * 110)
+
+for x in x_list:
+    naive = taylor_exp_naive(x)
+    reference = math.exp(x)
+    if reference != 0:
+        error = abs((naive - reference) / reference)
+    else:
+        error = float('inf')
+    print(f"{x:<8} | {naive:<30e} | {reference:<30e} | {error:<30e}")
+
+print("\nСТАБИЛЬНЫЙ ПОДХОД")
+print(f"{'x':<8} | {'Вычислено':<30} | {'math.exp':<30} | {'Относит. погрешность':<30}")
+print("-" * 110)
+
+for x in x_list:
+    stable = taylor_exp_stable(x)
+    reference = math.exp(x)
+    if reference != 0:
+        error = abs((stable - reference) / reference)
+    else:
+        error = float('inf')
+    print(f"{x:<8} | {stable:<30e} | {reference:<30e} | {error:<30e}")
